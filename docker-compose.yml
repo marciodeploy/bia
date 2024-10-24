@@ -1,39 +1,19 @@
+name: bia
 services:
   server:
-    build: .
-    container_name: bia
-    ports:
-      - 3001:8080
-    links:
-      - database
     environment:
-      DB_USER: postgres
+      DB_HOST: bia-instance-1.c5mwk0yc8624.us-east-1.rds.amazonaws.com
+      DB_PORT: "5432"
       DB_PWD: postgres
-      DB_HOST: database
-      DB_PORT: 5432
-      ## NAO PRECISA NO BOOTCAMP DAQUI PRA BAIXO ##
-      # DB_SECRET_NAME: 
-      # DB_REGION: 
-      # AWS_ACCESS_KEY_ID: 
-      # AWS_SECRET_ACCESS_KEY:
-      # DEBUG_SECRET: 
-      # IS_LOCAL: true 
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:8080/api/versao"]
-    #   interval: 10s
-    #   timeout: 5s
-    #   retries: 3
-    #   start_period: 5s     
-  database:
-    image: postgres:16.1
-    container_name: database
-    environment:
-      - "POSTGRES_USER=postgres"
-      - "POSTGRES_PASSWORD=postgres"
-      - "POSTGRES_DB=bia"
+      DB_USER: postgres
+    image: 864981753284.dkr.ecr.us-east-1.amazonaws.com/meddiflux:33ae5c5
+    networks:
+      default: null
     ports:
-      - 5433:5432
-    volumes:
-      - db:/var/lib/postgresql/data
-volumes:
-  db:
+      - mode: ingress
+        target: 8080
+        published: "80"
+        protocol: tcp
+networks:
+  default:
+    name: bia_default
