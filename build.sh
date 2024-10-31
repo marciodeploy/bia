@@ -1,13 +1,4 @@
-erro() {
-  echo "erro: $1"
-  exit 1
-}
-
-checar_ultimo_comando() {
-  if [ $? -ne 0 ]; then
-    erro "erro no deploy -- parando tudo"
-  fi
-}
+source utils.sh
 
 versao=$(git rev-parse HEAD | cut -c 1-7)
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 864981753284.dkr.ecr.us-east-1.amazonaws.com
