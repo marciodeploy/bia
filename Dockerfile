@@ -15,7 +15,7 @@ RUN npm install --loglevel=error
 
 COPY . .
 
-RUN REACT_APP_API_URL=$MEDDIFLUX_API_URL SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
+RUN NODE_OPTIONS=--openssl-legacy-provider REACT_APP_API_URL=$MEDDIFLUX_API_URL SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
 
 RUN mv client/build build
 
