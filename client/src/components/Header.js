@@ -20,7 +20,7 @@ const Header = ({ title, onAdd, showAdd }) => {
 };
 
 Header.defaultProps = {
-	title: "Meddiflux-04-11 DEV e PROD HTTPS",
+	title: "Meddiflux-06-11 HTTPS",
 };
 
 export default Header;
