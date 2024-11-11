@@ -10,7 +10,7 @@ if [ "$ambientedeploy" = "dev" ]; then
     eb deploy meddiflux-d --staged
 elif [ "$ambientedeploy" = "prod" ]; then
     echo "Ambiente de Produção Detectado"
-    API_URL="https://meddifluxp.hardcloud.com.br"
+    API_URL="http://meddiflux-p.us-east-1.elasticbeanstalk.com"
     ./build.sh $API_URL
     ./deploy_front.sh $API_URL $ambientedeploy
     eb deploy meddiflux-p --staged
