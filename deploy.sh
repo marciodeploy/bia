@@ -4,7 +4,7 @@ echo 'export PATH="/home/ec2-user/.ebcli-virtual-env/executables:$PATH"' >> ~/.b
 
 if [ "$ambientedeploy" = "homo" ]; then
     echo "Ambiente de Homologacao Detectado"
-    API_URL="http://meddiflux-h.us-east-1.elasticbeanstalk.com"
+    API_URL="https://meddifluxh.hardcloud.com.br"
     ./build.sh $API_URL
     ./deploy_front.sh $API_URL $ambientedeploy
     eb deploy meddiflux-h --staged
